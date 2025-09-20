@@ -438,16 +438,6 @@ section {
     opacity: 0.9;
 }
 
-.portfolio-item__link {
-    color: white;
-    font-size: 1.5rem;
-    transition: transform 0.3s ease;
-}
-
-.portfolio-item__link:hover {
-    transform: scale(1.2);
-}
-
 /* Контакты */
 .contact {
     background: #f8fafc;

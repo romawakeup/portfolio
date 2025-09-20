@@ -277,21 +277,6 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Обработка кликов по портфолио элементам
-portfolioItems.forEach(item => {
-    const link = item.querySelector('.portfolio-item__link');
-    if (link) {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const title = item.querySelector('.portfolio-item__title').textContent;
-            const description = item.querySelector('.portfolio-item__description').textContent;
-            
-            // Здесь можно добавить модальное окно или переход к детальной странице
-            showNotification(`Открывается: ${title}`, 'success');
-        });
-    }
-});
-
 // Инициализация анимаций при загрузке страницы
 document.addEventListener('DOMContentLoaded', () => {
     // Добавляем класс для анимаций
