@@ -39,35 +39,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Фильтрация портфолио
-const filterButtons = document.querySelectorAll('.filter-btn');
-const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        // Убираем активный класс со всех кнопок
-        filterButtons.forEach(btn => btn.classList.remove('filter-btn--active'));
-        // Добавляем активный класс к нажатой кнопке
-        button.classList.add('filter-btn--active');
-        
-        const filterValue = button.getAttribute('data-filter');
-        
-        portfolioItems.forEach(item => {
-            if (filterValue === 'all') {
-                item.style.display = 'block';
-                item.classList.remove('hidden');
-            } else {
-                if (item.getAttribute('data-category') === filterValue) {
-                    item.style.display = 'block';
-                    item.classList.remove('hidden');
-                } else {
-                    item.style.display = 'none';
-                    item.classList.add('hidden');
-                }
-            }
-        });
-    });
-});
+// Фильтрация портфолио (перенесена в Swiper инициализацию)
 
 // Анимация появления элементов при скролле
 const observerOptions = {
@@ -318,4 +290,298 @@ document.addEventListener('DOMContentLoaded', () => {
     if (aboutSection) {
         aboutObserver.observe(aboutSection);
     }
+});
+
+// Инициализация Swiper для портфолио
+document.addEventListener('DOMContentLoaded', () => {
+    const portfolioSwiper = new Swiper('.portfolio-swiper', {
+        // Основные настройки
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        
+        // Навигация
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        
+        // Пагинация
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        
+        // Адаптивность
+        breakpoints: {
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+        },
+        
+        // Эффекты
+        effect: 'slide',
+        speed: 600,
+        
+        // Дополнительные настройки
+        grabCursor: true,
+        keyboard: {
+            enabled: true,
+        },
+        mousewheel: {
+            invert: false,
+        },
+        
+        // События для работы с видео
+        on: {
+            slideChange: function() {
+                // Останавливаем все видео при смене слайда
+                const videos = document.querySelectorAll('.portfolio-item video');
+                videos.forEach(video => {
+                    video.pause();
+                });
+            },
+            init: function() {
+                // Инициализация видео элементов
+                const videos = document.querySelectorAll('.portfolio-item video');
+                videos.forEach(video => {
+                    video.addEventListener('play', function() {
+                        // Останавливаем другие видео при воспроизведении текущего
+                        videos.forEach(otherVideo => {
+                            if (otherVideo !== video) {
+                                otherVideo.pause();
+                            }
+                        });
+                    });
+                });
+            }
+        },
+    });
+    
+    // Интеграция с фильтрами портфолио
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const swiperSlides = document.querySelectorAll('.swiper-slide');
+    
+    // Функция для фильтрации слайдов
+    function filterSlides(filterValue) {
+        swiperSlides.forEach(slide => {
+            const portfolioItem = slide.querySelector('.portfolio-item');
+            if (portfolioItem) {
+                if (filterValue === 'all') {
+                    slide.style.display = 'block';
+                    slide.classList.remove('hidden');
+                } else {
+                    if (portfolioItem.getAttribute('data-category') === filterValue) {
+                        slide.style.display = 'block';
+                        slide.classList.remove('hidden');
+                    } else {
+                        slide.style.display = 'none';
+                        slide.classList.add('hidden');
+                    }
+                }
+            }
+        });
+        
+        // Обновляем Swiper после изменения видимости слайдов
+        setTimeout(() => {
+            portfolioSwiper.update();
+            // Переходим к первому видимому слайду
+            const visibleSlides = Array.from(swiperSlides).filter(slide => 
+                slide.style.display !== 'none' && !slide.classList.contains('hidden')
+            );
+            if (visibleSlides.length > 0) {
+                const firstVisibleIndex = Array.from(swiperSlides).indexOf(visibleSlides[0]);
+                portfolioSwiper.slideTo(firstVisibleIndex);
+            }
+            
+            // Обновляем медиа элементы для модального окна
+            collectMediaItems();
+        }, 100);
+    }
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Убираем активный класс со всех кнопок
+            filterButtons.forEach(btn => btn.classList.remove('filter-btn--active'));
+            // Добавляем активный класс к нажатой кнопке
+            button.classList.add('filter-btn--active');
+            
+            const filterValue = button.getAttribute('data-filter');
+            filterSlides(filterValue);
+        });
+    });
+    
+    // Инициализируем с фильтром "Все работы"
+    filterSlides('all');
+    
+    // Модальное окно для просмотра медиа
+    const modal = document.getElementById('mediaModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalVideo = document.getElementById('modalVideo');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalClose = document.getElementById('modalClose');
+    const modalPrev = document.getElementById('modalPrev');
+    const modalNext = document.getElementById('modalNext');
+    
+    let currentMediaIndex = 0;
+    let currentMediaItems = [];
+    
+    // Собираем все медиа элементы
+    function collectMediaItems() {
+        currentMediaItems = [];
+        const visibleSlides = Array.from(swiperSlides).filter(slide => 
+            slide.style.display !== 'none' && !slide.classList.contains('hidden')
+        );
+        
+        visibleSlides.forEach(slide => {
+            const portfolioItem = slide.querySelector('.portfolio-item');
+            if (portfolioItem) {
+                const img = portfolioItem.querySelector('img');
+                const video = portfolioItem.querySelector('video');
+                
+                if (img) {
+                    currentMediaItems.push({
+                        type: 'image',
+                        src: img.src,
+                        alt: img.alt,
+                        title: img.alt,
+                        description: 'Фотография из портфолио'
+                    });
+                }
+                
+                if (video) {
+                    currentMediaItems.push({
+                        type: 'video',
+                        src: video.src,
+                        title: 'Видео из портфолио',
+                        description: 'Видео контент'
+                    });
+                }
+            }
+        });
+    }
+    
+    // Открытие модального окна
+    function openModal(index) {
+        currentMediaIndex = index;
+        collectMediaItems();
+        
+        if (currentMediaItems.length === 0) return;
+        
+        const media = currentMediaItems[currentMediaIndex];
+        
+        // Скрываем все медиа
+        modalImage.style.display = 'none';
+        modalVideo.style.display = 'none';
+        
+        if (media.type === 'image') {
+            modalImage.src = media.src;
+            modalImage.alt = media.alt;
+            modalImage.style.display = 'block';
+        } else if (media.type === 'video') {
+            modalVideo.src = media.src;
+            modalVideo.style.display = 'block';
+        }
+        
+        modalTitle.textContent = media.title;
+        modalDescription.textContent = media.description;
+        
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    // Закрытие модального окна
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+        
+        // Останавливаем видео при закрытии
+        modalVideo.pause();
+    }
+    
+    // Навигация по медиа
+    function showNext() {
+        if (currentMediaItems.length === 0) return;
+        currentMediaIndex = (currentMediaIndex + 1) % currentMediaItems.length;
+        openModal(currentMediaIndex);
+    }
+    
+    function showPrev() {
+        if (currentMediaItems.length === 0) return;
+        currentMediaIndex = (currentMediaIndex - 1 + currentMediaItems.length) % currentMediaItems.length;
+        openModal(currentMediaIndex);
+    }
+    
+    // Обработчики событий
+    modalClose.addEventListener('click', closeModal);
+    modalPrev.addEventListener('click', showPrev);
+    modalNext.addEventListener('click', showNext);
+    
+    // Закрытие по клику на overlay
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal || e.target.classList.contains('modal__overlay')) {
+            closeModal();
+        }
+    });
+    
+    // Закрытие по Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+    
+    // Навигация клавишами
+    document.addEventListener('keydown', (e) => {
+        if (modal.classList.contains('active')) {
+            if (e.key === 'ArrowLeft') {
+                showPrev();
+            } else if (e.key === 'ArrowRight') {
+                showNext();
+            }
+        }
+    });
+    
+    // Добавляем обработчики клика на медиа элементы
+    swiperSlides.forEach((slide, slideIndex) => {
+        const portfolioItem = slide.querySelector('.portfolio-item');
+        if (portfolioItem) {
+            const img = portfolioItem.querySelector('img');
+            const video = portfolioItem.querySelector('video');
+            
+            if (img) {
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', () => {
+                    // Находим индекс этого элемента среди видимых
+                    const visibleSlides = Array.from(swiperSlides).filter(s => 
+                        s.style.display !== 'none' && !s.classList.contains('hidden')
+                    );
+                    const mediaIndex = visibleSlides.indexOf(slide);
+                    openModal(mediaIndex);
+                });
+            }
+            
+            if (video) {
+                video.style.cursor = 'pointer';
+                video.addEventListener('click', () => {
+                    // Находим индекс этого элемента среди видимых
+                    const visibleSlides = Array.from(swiperSlides).filter(s => 
+                        s.style.display !== 'none' && !s.classList.contains('hidden')
+                    );
+                    const mediaIndex = visibleSlides.indexOf(slide);
+                    openModal(mediaIndex);
+                });
+            }
+        }
+    });
 });

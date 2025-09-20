@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 </head>
 
 <body>
@@ -77,6 +79,7 @@
                                 <span class="skills__tag">JQuery</span>
                                 <span class="skills__tag">Vue.JS 2 Options API</span>
                                 <span class="skills__tag">Адаптивная верстка</span>
+                                <span class="skills__tag">Работаю с чужим кодом</span>
                             </div>
                         </div>
                     </div>
@@ -106,58 +109,113 @@
                     <button class="filter-btn" data-filter="photo">Фотографии</button>
                     <button class="filter-btn" data-filter="video">Видео</button>
                 </div>
-                <div class="portfolio__grid">
-                    <div class="portfolio-item" data-category="photo">
-                        <div class="portfolio-item__image">
-                            <div class="portfolio-item__placeholder">
-                                <i class="fas fa-camera"></i>
-                                <p>Фотография 1</p>
+
+                <!-- Swiper -->
+                <div class="swiper portfolio-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="portfolio-item" data-category="photo">
+                                <div class="portfolio-item__image">
+                                    <img src="images/photo/photo1.png" alt="Фотография 1" class="portfolio-item__img">
+                                </div>
                             </div>
-                            <div class="portfolio-item__overlay">
-                                <h3 class="portfolio-item__title">Название работы</h3>
-                                <p class="portfolio-item__description">Описание проекта</p>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="portfolio-item" data-category="video">
+                                <div class="portfolio-item__image">
+                                    <video src="video/video1.mp4" controls muted loop></video>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="portfolio-item" data-category="photo">
+                                <div class="portfolio-item__image">
+                                    <img src="images/photo/photo1.png" alt="Фотография 1" class="portfolio-item__img">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="portfolio-item" data-category="photo">
+                                <div class="portfolio-item__image">
+                                    <img src="images/photo/photo3.png" alt="Фотография 2" class="portfolio-item__img">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="portfolio-item" data-category="photo">
+                                <div class="portfolio-item__image">
+                                    <img src="images/photo/photo1.png" alt="Фотография 1" class="portfolio-item__img">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="portfolio-item" data-category="video">
+                                <div class="portfolio-item__image">
+                                    <video src="video/video1.mp4" controls muted loop></video>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="portfolio-item" data-category="photo">
+                                <div class="portfolio-item__image">
+                                    <img src="images/photo/photo1.png" alt="Фотография 1" class="portfolio-item__img">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="portfolio-item" data-category="photo">
+                                <div class="portfolio-item__image">
+                                    <img src="images/photo/photo4.png" alt="Фотография 3" class="portfolio-item__img">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="portfolio-item" data-category="video">
+                                <div class="portfolio-item__image">
+                                    <video src="video/video1.mp4" controls muted loop></video>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="portfolio-item" data-category="video">
+                                <div class="portfolio-item__image">
+                                    <video src="video/video1.mp4" controls muted loop></video>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="portfolio-item" data-category="video">
+                                <div class="portfolio-item__image">
+                                    <video src="video/video1.mp4" controls muted loop></video>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="portfolio-item" data-category="video">
+                                <div class="portfolio-item__image">
+                                    <video src="video/video1.mp4" controls muted loop></video>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="portfolio-item" data-category="video">
-                        <div class="portfolio-item__image">
-                            <div class="portfolio-item__placeholder">
-                                <i class="fas fa-video"></i>
-                                <p>Видео 1</p>
-                            </div>
-                            <div class="portfolio-item__overlay">
-                                <h3 class="portfolio-item__title">Видео проект</h3>
-                                <p class="portfolio-item__description">Описание видео</p>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Navigation buttons -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
 
-                    <div class="portfolio-item" data-category="photo">
-                        <div class="portfolio-item__image">
-                            <div class="portfolio-item__placeholder">
-                                <i class="fas fa-camera"></i>
-                                <p>Фотография 2</p>
-                            </div>
-                            <div class="portfolio-item__overlay">
-                                <h3 class="portfolio-item__title">Фотосессия</h3>
-                                <p class="portfolio-item__description">Портретная съемка</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="portfolio-item" data-category="video">
-                        <div class="portfolio-item__image">
-                            <div class="portfolio-item__placeholder">
-                                <i class="fas fa-video"></i>
-                                <p>Видео 2</p>
-                            </div>
-                            <div class="portfolio-item__overlay">
-                                <h3 class="portfolio-item__title">Рекламный ролик</h3>
-                                <p class="portfolio-item__description">Короткометражка</p>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Pagination -->
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
         </section>
@@ -228,6 +286,33 @@
         </div>
     </footer>
 
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <!-- Modal для просмотра медиа -->
+    <div id="mediaModal" class="modal">
+        <div class="modal__overlay"></div>
+        <div class="modal__container">
+            <button class="modal__close" id="modalClose">&times;</button>
+            <button class="modal__prev" id="modalPrev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="modal__next" id="modalNext">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="modal__content">
+                <img id="modalImage" class="modal__media" style="display: none;">
+                <video id="modalVideo" class="modal__media" controls style="display: none;">
+                    <source src="" type="video/mp4">
+                </video>
+            </div>
+            <div class="modal__info">
+                <h3 id="modalTitle" class="modal__title"></h3>
+                <p id="modalDescription" class="modal__description"></p>
+            </div>
+        </div>
+    </div>
+    
     <script src="script.js"></script>
 </body>
 
