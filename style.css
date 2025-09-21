@@ -925,6 +925,7 @@ body {
   }
 
   .portfolio__filter {
+    margin-bottom: 0;
     gap: var(--spacing-xs);
   }
 
