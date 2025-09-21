@@ -103,6 +103,10 @@ html {
 /* Стили из HTML (перенесены для лучшей организации) */
 .hero-banner {
   min-height: 100vh;
+  /* Оптимизация для мобильных устройств */
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 body {
@@ -513,7 +517,7 @@ body {
   box-shadow: var(--shadow-xl);
 }
 
-.portfolio-item__image {
+.portfolio-item__media {
   position: relative;
   height: 250px;
   overflow: hidden;
@@ -851,6 +855,25 @@ body {
   .hero-banner__avatar {
     width: var(--avatar-size-mobile);
     height: var(--avatar-size-mobile);
+  }
+
+  /* Отключаем параллакс и оптимизируем для мобильных устройств */
+  .hero-banner {
+    transform: none !important;
+    will-change: auto;
+  }
+
+  /* Отключаем некоторые анимации на мобильных для лучшей производительности */
+  .btn:hover {
+    transform: none;
+  }
+
+  .portfolio-item:hover {
+    transform: none;
+  }
+
+  .stat:hover {
+    transform: none;
   }
 
   .modal__container {

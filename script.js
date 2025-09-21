@@ -1,6 +1,3 @@
-// Портфолио сайт - Оптимизированный JavaScript код
-// Автор: Roman Wakeup
-
 // Конфигурация
 const CONFIG = {
   scrollThreshold: 100,
@@ -28,6 +25,9 @@ const DOM = {
 
 // Инициализация при загрузке DOM
 document.addEventListener('DOMContentLoaded', init);
+
+// Обработчик изменения размера окна для оптимизации производительности
+window.addEventListener('resize', throttle(handleResize, 250));
 
 function init() {
   cacheDOMElements();
@@ -101,7 +101,9 @@ function handleSmoothScroll(e) {
 
 // Эффекты при скролле
 function initScrollEffects() {
-  window.addEventListener('scroll', throttle(handleScroll, 16));
+  // Используем более агрессивное throttling для мобильных устройств
+  const throttleDelay = window.innerWidth <= 768 ? 32 : 16;
+  window.addEventListener('scroll', throttle(handleScroll, throttleDelay), { passive: true });
 }
 
 function handleScroll() {
@@ -139,10 +141,24 @@ function updateActiveNavLink() {
 }
 
 function updateParallaxEffect() {
+  // Отключаем параллакс на мобильных устройствах для лучшей производительности
+  if (window.innerWidth <= 768) {
+    return;
+  }
+  
   const hero = document.querySelector('.hero-banner');
   if (hero) {
-    const rate = window.pageYOffset * -0.5;
+    const rate = window.pageYOffset * -0.3; // Уменьшаем интенсивность эффекта
     hero.style.transform = `translateY(${rate}px)`;
+  }
+}
+
+// Обработка изменения размера окна
+function handleResize() {
+  // Сбрасываем transform для hero-banner при изменении размера
+  const hero = document.querySelector('.hero-banner');
+  if (hero && window.innerWidth <= 768) {
+    hero.style.transform = 'none';
   }
 }
 
