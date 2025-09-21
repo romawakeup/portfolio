@@ -4,31 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Портфолио Frontend-разработчика Романа. Создание современных веб-интерфейсов, адаптивная верстка, JavaScript, Vue.js">
-    <meta name="keywords" content="frontend разработчик, веб-разработка, JavaScript, HTML, CSS, Vue.js, адаптивная верстка">
+    <meta name="description"
+        content="Портфолио Frontend-разработчика Романа. Создание современных веб-интерфейсов, адаптивная верстка, JavaScript, Vue.js">
+    <meta name="keywords"
+        content="frontend разработчик, веб-разработка, JavaScript, HTML, CSS, Vue.js, адаптивная верстка">
     <meta name="author" content="Roman Wakeup">
     <meta name="robots" content="index, follow">
     <title>Портфолио Frontend-разработчика | Roman Wakeup</title>
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://romawakeup.com/">
-    <meta property="og:title" content="Портфолио Frontend-разработчика | Roman Wakeup">
-    <meta property="og:description" content="Создание современных веб-интерфейсов, адаптивная верстка, JavaScript, Vue.js">
-    <meta property="og:image" content="https://romawakeup.com/images/avatar.jpg">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://romawakeup.com/">
-    <meta property="twitter:title" content="Портфолио Frontend-разработчика | Roman Wakeup">
-    <meta property="twitter:description" content="Создание современных веб-интерфейсов, адаптивная верстка, JavaScript, Vue.js">
-    <meta property="twitter:image" content="https://romawakeup.com/images/avatar.jpg">
-    <style>
-        /* Критический CSS для быстрой загрузки */
-        *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Inter',sans-serif;line-height:1.6;color:#333;overflow-x:hidden}.header{position:sticky;top:0;width:100%;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);z-index:1000;transition:all 0.3s ease;border-bottom:1px solid rgba(0,0,0,0.1)}.navbar__container{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;height:70px}.navbar__title{color:#6366f1;font-weight:700;font-size:1.5rem}.hero-banner{display:flex;align-items:center;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;position:relative;overflow:hidden;min-height:100vh}.hero-banner__container{max-width:1200px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:1}.hero-banner__title{font-size:3rem;font-weight:700;margin-bottom:1rem;line-height:1.2}.hero-banner__subtitle{font-size:1.25rem;margin-bottom:2rem;opacity:0.9}.hero-banner__buttons{display:flex;gap:1rem;flex-wrap:wrap}.btn{padding:12px 30px;border:none;border-radius:50px;text-decoration:none;font-weight:600;transition:all 0.3s ease;cursor:pointer;display:inline-block;text-align:center;font-size:1rem}.btn--primary{background:#6366f1;color:white}.btn--secondary{background:transparent;color:white;border:2px solid white}@media (max-width:768px){.hero-banner__container{grid-template-columns:1fr;text-align:center;gap:2rem}.hero-banner__title{font-size:2.5rem}}
-    </style>
     <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="style.css"></noscript>
+    <noscript>
+        <link rel="stylesheet" href="style.css">
+    </noscript>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -72,13 +58,14 @@
                 </div>
                 <div class="hero-banner__image">
                     <div class="hero-banner__avatar">
-                        <img src="images/avatar.jpg" alt="Фото Романа - Frontend разработчика" class="hero-banner__photo" loading="eager">
+                        <img src="images/avatar.jpg"
+                            class="hero-banner__photo" loading="eager">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="section about" role="region" aria-labelledby="about-title">
+        <section id="about" class="section about" aria-labelledby="about-title">
             <div class="container">
                 <h2 id="about-title" class="section-title">О себе</h2>
                 <div class="about__content">
@@ -126,21 +113,26 @@
             </div>
         </section>
 
-        <section id="portfolio" class="section portfolio" role="region" aria-labelledby="portfolio-title">
+        <section id="portfolio" class="section portfolio" aria-labelledby="portfolio-title">
             <div class="container">
                 <h2 id="portfolio-title" class="section-title">Портфолио</h2>
                 <div class="portfolio__filter" role="tablist" aria-label="Фильтры портфолио">
-                    <button class="filter-btn filter-btn--active" data-filter="all" role="tab" aria-selected="true" aria-controls="portfolio-content">Все работы</button>
-                    <button class="filter-btn" data-filter="photo" role="tab" aria-selected="false" aria-controls="portfolio-content">Фотографии</button>
-                    <button class="filter-btn" data-filter="video" role="tab" aria-selected="false" aria-controls="portfolio-content">Видео</button>
+                    <button class="filter-btn filter-btn--active" data-filter="all" role="tab" aria-selected="true"
+                        aria-controls="portfolio-content">Все работы</button>
+                    <button class="filter-btn" data-filter="photo" role="tab" aria-selected="false"
+                        aria-controls="portfolio-content">Фотографии</button>
+                    <button class="filter-btn" data-filter="video" role="tab" aria-selected="false"
+                        aria-controls="portfolio-content">Видео</button>
                 </div>
 
-                <div class="swiper portfolio-swiper" id="portfolio-content" role="tabpanel" aria-label="Галерея портфолио">
+                <div class="swiper portfolio-swiper" id="portfolio-content" role="tabpanel"
+                    aria-label="Галерея портфолио">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="portfolio-item" data-category="photo">
                                 <div class="portfolio-item__image">
-                                    <img src="portfolio/photo/photo1.png" alt="Работа из портфолио 1" class="portfolio-item__img" loading="lazy">
+                                    <img src="portfolio/photo/photo1.png" alt="Работа из портфолио 1"
+                                        class="portfolio-item__img" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -148,7 +140,8 @@
                         <div class="swiper-slide">
                             <div class="portfolio-item" data-category="photo">
                                 <div class="portfolio-item__image">
-                                    <img src="portfolio/photo/photo2.png" alt="Работа из портфолио 2" class="portfolio-item__img" loading="lazy">
+                                    <img src="portfolio/photo/photo2.png" alt="Работа из портфолио 2"
+                                        class="portfolio-item__img" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -156,7 +149,8 @@
                         <div class="swiper-slide">
                             <div class="portfolio-item" data-category="photo">
                                 <div class="portfolio-item__image">
-                                    <img src="portfolio/photo/photo3.png" alt="Работа из портфолио 3" class="portfolio-item__img" loading="lazy">
+                                    <img src="portfolio/photo/photo3.png" alt="Работа из портфолио 3"
+                                        class="portfolio-item__img" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -164,7 +158,8 @@
                         <div class="swiper-slide">
                             <div class="portfolio-item" data-category="photo">
                                 <div class="portfolio-item__image">
-                                    <img src="portfolio/photo/photo4.png" alt="Работа из портфолио 4" class="portfolio-item__img" loading="lazy">
+                                    <img src="portfolio/photo/photo4.png" alt="Работа из портфолио 4"
+                                        class="portfolio-item__img" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -172,7 +167,8 @@
                         <div class="swiper-slide">
                             <div class="portfolio-item" data-category="photo">
                                 <div class="portfolio-item__image">
-                                    <img src="portfolio/photo/photo5.png" alt="Работа из портфолио 5" class="portfolio-item__img" loading="lazy">
+                                    <img src="portfolio/photo/photo5.png" alt="Работа из портфолио 5"
+                                        class="portfolio-item__img" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -180,7 +176,8 @@
                         <div class="swiper-slide">
                             <div class="portfolio-item" data-category="photo">
                                 <div class="portfolio-item__image">
-                                    <img src="portfolio/photo/photo6.png" alt="Работа из портфолио 6" class="portfolio-item__img" loading="lazy">
+                                    <img src="portfolio/photo/photo6.png" alt="Работа из портфолио 6"
+                                        class="portfolio-item__img" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -188,7 +185,8 @@
                         <div class="swiper-slide">
                             <div class="portfolio-item" data-category="photo">
                                 <div class="portfolio-item__image">
-                                    <img src="portfolio/photo/photo7.png" alt="Работа из портфолио 7" class="portfolio-item__img" loading="lazy">
+                                    <img src="portfolio/photo/photo7.png" alt="Работа из портфолио 7"
+                                        class="portfolio-item__img" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -196,7 +194,8 @@
                         <div class="swiper-slide">
                             <div class="portfolio-item" data-category="photo">
                                 <div class="portfolio-item__image">
-                                    <img src="portfolio/photo/photo8.png" alt="Работа из портфолио 8" class="portfolio-item__img" loading="lazy">
+                                    <img src="portfolio/photo/photo8.png" alt="Работа из портфолио 8"
+                                        class="portfolio-item__img" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -204,7 +203,8 @@
                         <div class="swiper-slide">
                             <div class="portfolio-item" data-category="photo">
                                 <div class="portfolio-item__image">
-                                    <img src="portfolio/photo/photo9.png" alt="Работа из портфолио 9" class="portfolio-item__img" loading="lazy">
+                                    <img src="portfolio/photo/photo9.png" alt="Работа из портфолио 9"
+                                        class="portfolio-item__img" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -212,7 +212,8 @@
                         <div class="swiper-slide">
                             <div class="portfolio-item" data-category="photo">
                                 <div class="portfolio-item__image">
-                                    <img src="portfolio/photo/photo10.png" alt="Работа из портфолио 10" class="portfolio-item__img" loading="lazy">
+                                    <img src="portfolio/photo/photo10.png" alt="Работа из портфолио 10"
+                                        class="portfolio-item__img" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -220,7 +221,8 @@
                         <div class="swiper-slide">
                             <div class="portfolio-item" data-category="photo">
                                 <div class="portfolio-item__image">
-                                    <img src="portfolio/photo/photo11.png" alt="Работа из портфолио 11" class="portfolio-item__img" loading="lazy">
+                                    <img src="portfolio/photo/photo11.png" alt="Работа из портфолио 11"
+                                        class="portfolio-item__img" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -228,7 +230,8 @@
                         <div class="swiper-slide">
                             <div class="portfolio-item" data-category="photo">
                                 <div class="portfolio-item__image">
-                                    <img src="portfolio/photo/photo12.png" alt="Работа из портфолио 12" class="portfolio-item__img" loading="lazy">
+                                    <img src="portfolio/photo/photo12.png" alt="Работа из портфолио 12"
+                                        class="portfolio-item__img" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -236,7 +239,8 @@
                         <div class="swiper-slide">
                             <div class="portfolio-item" data-category="photo">
                                 <div class="portfolio-item__image">
-                                    <img src="portfolio/photo/photo13.png" alt="Работа из портфолио 13" class="portfolio-item__img" loading="lazy">
+                                    <img src="portfolio/photo/photo13.png" alt="Работа из портфолио 13"
+                                        class="portfolio-item__img" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -244,7 +248,8 @@
                         <div class="swiper-slide">
                             <div class="portfolio-item" data-category="photo">
                                 <div class="portfolio-item__image">
-                                    <img src="portfolio/photo/photo14.png" alt="Работа из портфолио 14" class="portfolio-item__img" loading="lazy">
+                                    <img src="portfolio/photo/photo14.png" alt="Работа из портфолио 14"
+                                        class="portfolio-item__img" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -252,7 +257,8 @@
                         <div class="swiper-slide">
                             <div class="portfolio-item" data-category="photo">
                                 <div class="portfolio-item__image">
-                                    <img src="portfolio/photo/photo15.png" alt="Работа из портфолио 15" class="portfolio-item__img" loading="lazy">
+                                    <img src="portfolio/photo/photo15.png" alt="Работа из портфолио 15"
+                                        class="portfolio-item__img" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -260,7 +266,8 @@
                         <div class="swiper-slide">
                             <div class="portfolio-item" data-category="photo">
                                 <div class="portfolio-item__image">
-                                    <img src="portfolio/photo/photo16.png" alt="Работа из портфолио 16" class="portfolio-item__img" loading="lazy">
+                                    <img src="portfolio/photo/photo16.png" alt="Работа из портфолио 16"
+                                        class="portfolio-item__img" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -268,7 +275,8 @@
                         <div class="swiper-slide">
                             <div class="portfolio-item" data-category="photo">
                                 <div class="portfolio-item__image">
-                                    <img src="portfolio/photo/photo17.png" alt="Работа из портфолио 17" class="portfolio-item__img" loading="lazy">
+                                    <img src="portfolio/photo/photo17.png" alt="Работа из портфолио 17"
+                                        class="portfolio-item__img" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -276,7 +284,8 @@
                         <div class="swiper-slide">
                             <div class="portfolio-item" data-category="photo">
                                 <div class="portfolio-item__image">
-                                    <img src="portfolio/photo/photo18.png" alt="Работа из портфолио 18" class="portfolio-item__img" loading="lazy">
+                                    <img src="portfolio/photo/photo18.png" alt="Работа из портфолио 18"
+                                        class="portfolio-item__img" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -284,7 +293,8 @@
                         <div class="swiper-slide">
                             <div class="portfolio-item" data-category="video">
                                 <div class="portfolio-item__image">
-                                    <video src="video/video1.mp4" controls muted loop title="Видео из портфолио"></video>
+                                    <video src="video/video1.mp4" controls muted loop
+                                        title="Видео из портфолио"></video>
                                 </div>
                             </div>
                         </div>
@@ -296,16 +306,17 @@
             </div>
         </section>
 
-        <section id="contact" class="section contact" role="region" aria-labelledby="contact-title">
+        <section id="contact" class="section contact" aria-labelledby="contact-title">
             <div class="container">
                 <h2 id="contact-title" class="section-title">Свяжитесь со мной</h2>
                 <div class="contact__content">
                     <div class="contact__info">
                         <h3 class="contact__title">Давайте работать вместе!</h3>
-                        <p class="contact__description">Готов обсудить ваш проект и создать что-то уникальное. Свяжитесь
-                            со
-                            мной любым удобным способом.
+                        <p class="contact__description">
+                            Готов обсудить ваш проект и создать что-то уникальное.<br>
+                            Свяжитесь со мной любым удобным способом.
                         </p>
+                        <p></p>
                         <div class="contact__methods">
                             <div class="contact-method">
                                 <i class="contact-method__icon fa-solid fa-at"></i>
@@ -318,7 +329,7 @@
                                 <i class="contact-method__icon fa-brands fa-whatsapp"></i>
                                 <div class="contact-method__content">
                                     <h4 class="contact-method__title">Whatsapp</h4>
-                                    <p class="contact-method__text">+7 (999) 123-45-67</p>
+                                    <p class="contact-method__text">+7 (953) 966-67-83</p>
                                 </div>
                             </div>
                             <div class="contact-method">
