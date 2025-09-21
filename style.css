@@ -210,6 +210,7 @@ body {
     cursor: pointer;
     display: inline-block;
     text-align: center;
+    font-size: 1rem;
 }
 
 .btn--primary {
@@ -236,7 +237,7 @@ body {
 }
 
 /* Секции */
-section {
+.section {
     padding: 80px 0;
 }
 
@@ -277,7 +278,7 @@ section {
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
     color: #6b7280;
-    line-height: 1.8;
+    line-height: 1.5;
 }
 
 .skills {
@@ -474,18 +475,19 @@ section {
     font-size: 1.1rem;
     color: #6b7280;
     margin-bottom: 2rem;
-    line-height: 1.8;
+    line-height: 1.5;
 }
 
 .contact__methods {
-    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .contact-method {
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    margin-bottom: 1.5rem;
     padding: 1rem;
     background: white;
     border-radius: 10px;
@@ -630,7 +632,7 @@ section {
         font-size: 1.5rem;
     }
 
-    section {
+    .section {
         padding: 40px 0;
     }
 
@@ -663,6 +665,12 @@ section {
 
     .filter-btn {
         padding: 8px 16px;
+    }
+}
+
+@media(max-width: 400px) {
+    .filter-btn {
+        font-size: 0.8rem;
     }
 }
 
