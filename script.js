@@ -101,7 +101,6 @@ function handleSmoothScroll(e) {
 
 // Эффекты при скролле
 function initScrollEffects() {
-  // Используем более агрессивное throttling для мобильных устройств
   const throttleDelay = window.innerWidth <= 768 ? 32 : 16;
   window.addEventListener('scroll', throttle(handleScroll, throttleDelay), { passive: true });
 }
