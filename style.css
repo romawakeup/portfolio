@@ -24,7 +24,7 @@ body {
 
 /* Шапка сайта */
 .header {
-    position: fixed;
+    position: sticky;
     top: 0;
     width: 100%;
     background: rgba(255, 255, 255, 0.95);
@@ -123,7 +123,6 @@ body {
 
 /* Главная секция */
 .hero-banner {
-    min-height: 100vh;
     display: flex;
     align-items: center;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -156,7 +155,7 @@ body {
 }
 
 .hero-banner__title {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 700;
     margin-bottom: 1rem;
     line-height: 1.2;
@@ -326,10 +325,9 @@ section {
 }
 
 .stat__number {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     color: #6366f1;
-    margin-bottom: 0.5rem;
 }
 
 .stat__label {
@@ -403,21 +401,6 @@ section {
     font-weight: bold;
 }
 
-.portfolio-swiper .swiper-pagination {
-    bottom: 0;
-}
-
-.portfolio-swiper .swiper-pagination-bullet {
-    background: #6366f1;
-    opacity: 0.3;
-    transition: all 0.3s ease;
-}
-
-.portfolio-swiper .swiper-pagination-bullet-active {
-    opacity: 1;
-    transform: scale(1.2);
-}
-
 .portfolio__grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -430,6 +413,7 @@ section {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
     background: white;
+    border: 2px solid #e5e7eb;
 }
 
 .portfolio-item:hover {
@@ -576,7 +560,7 @@ section {
     .navbar__hamburger {
         display: flex;
     }
-    
+
     .navbar__menu {
         position: fixed;
         left: -100%;
@@ -589,57 +573,70 @@ section {
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
         padding: 2rem 0;
     }
-    
+
     .navbar__menu.active {
         left: 0;
     }
-    
+
     .hero-banner__container {
         grid-template-columns: 1fr;
         text-align: center;
         gap: 2rem;
     }
-    
+
     .hero-banner__title {
         font-size: 2.5rem;
     }
-    
+
     .about__content {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-    
+
     .about__stats {
         flex-direction: row;
         justify-content: space-around;
     }
-    
+
     .contact__content {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-    
+
     .portfolio__grid {
         grid-template-columns: 1fr;
     }
-    
+
     .portfolio-swiper .swiper-button-next,
     .portfolio-swiper .swiper-button-prev {
         width: 40px;
         height: 40px;
     }
-    
+
     .portfolio-swiper .swiper-button-next:after,
     .portfolio-swiper .swiper-button-prev:after {
         font-size: 14px;
     }
-    
+
     .hero-banner__buttons {
         justify-content: center;
     }
-    
+
     .section-title {
         font-size: 2rem;
+    }
+
+    .contact__title {
+        font-size: 1.5rem;
+    }
+
+    section {
+        padding: 40px 0;
+    }
+
+    .hero-banner__avatar {
+        width: 150px;
+        height: 150px;
     }
 }
 
@@ -647,23 +644,23 @@ section {
     .hero-banner__title {
         font-size: 2rem;
     }
-    
+
     .hero-banner__subtitle {
         font-size: 1rem;
     }
-    
+
     .btn {
         padding: 10px 20px;
     }
-    
+
     .about__stats {
         flex-direction: column;
     }
-    
+
     .portfolio__filter {
         gap: 0.5rem;
     }
-    
+
     .filter-btn {
         padding: 8px 16px;
     }
@@ -675,6 +672,7 @@ section {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -685,10 +683,21 @@ section {
     animation: fadeInUp 0.6s ease forwards;
 }
 
-.portfolio-item:nth-child(1) { animation-delay: 0.1s; }
-.portfolio-item:nth-child(2) { animation-delay: 0.2s; }
-.portfolio-item:nth-child(3) { animation-delay: 0.3s; }
-.portfolio-item:nth-child(4) { animation-delay: 0.4s; }
+.portfolio-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.portfolio-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.portfolio-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.portfolio-item:nth-child(4) {
+    animation-delay: 0.4s;
+}
 
 /* Скрытие элементов при фильтрации */
 .portfolio-item.hidden {
@@ -752,10 +761,6 @@ section {
     transition: transform 0.3s ease;
 }
 
-.modal__media:hover {
-    transform: scale(1.02);
-}
-
 .modal__close {
     position: absolute;
     top: 20px;
@@ -814,43 +819,17 @@ section {
     right: 30px;
 }
 
-.modal__info {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    color: white;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 15px 25px;
-    border-radius: 25px;
-    backdrop-filter: blur(10px);
-    max-width: 80%;
-}
-
-.modal__title {
-    font-size: 1.5rem;
-    margin-bottom: 5px;
-    font-weight: 600;
-}
-
-.modal__description {
-    font-size: 1rem;
-    opacity: 0.9;
-    margin: 0;
-}
-
 /* Адаптивность для модального окна */
 @media (max-width: 768px) {
     .modal__container {
         padding: 10px;
     }
-    
+
     .modal__content {
         max-width: 95%;
         max-height: 70%;
     }
-    
+
     .modal__close {
         top: 10px;
         right: 15px;
@@ -858,32 +837,32 @@ section {
         height: 40px;
         font-size: 1.5rem;
     }
-    
+
     .modal__prev,
     .modal__next {
         width: 50px;
         height: 50px;
         font-size: 1.2rem;
     }
-    
+
     .modal__prev {
         left: 15px;
     }
-    
+
     .modal__next {
         right: 15px;
     }
-    
+
     .modal__info {
         bottom: 10px;
         padding: 10px 20px;
         max-width: 90%;
     }
-    
+
     .modal__title {
         font-size: 1.2rem;
     }
-    
+
     .modal__description {
         font-size: 0.9rem;
     }

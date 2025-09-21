@@ -253,29 +253,7 @@ document.head.appendChild(style);
 document.addEventListener('DOMContentLoaded', () => {
     // Добавляем класс для анимаций
     document.body.classList.add('loaded');
-    
-    // Анимация счетчиков в секции "О себе"
-    const stats = document.querySelectorAll('.stat__number');
-    const animateCounters = () => {
-        stats.forEach(stat => {
-            const target = parseInt(stat.textContent);
-            const increment = target / 50;
-            let current = 0;
-            
-            const updateCounter = () => {
-                if (current < target) {
-                    current += increment;
-                    stat.textContent = Math.ceil(current) + (stat.textContent.includes('%') ? '%' : '+');
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    stat.textContent = target + (stat.textContent.includes('%') ? '%' : '+');
-                }
-            };
-            
-            updateCounter();
-        });
-    };
-    
+     
     // Запускаем анимацию счетчиков когда секция становится видимой
     const aboutSection = document.querySelector('.about');
     const aboutObserver = new IntersectionObserver((entries) => {
@@ -299,23 +277,17 @@ document.addEventListener('DOMContentLoaded', () => {
         slidesPerView: 1,
         spaceBetween: 30,
         loop: true,
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-        },
+        // autoplay: {
+        //     delay: 3000,
+        //     disableOnInteraction: false,
+        // },
         
         // Навигация
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
-        
-        // Пагинация
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        
+               
         // Адаптивность
         breakpoints: {
             768: {
@@ -492,9 +464,6 @@ document.addEventListener('DOMContentLoaded', () => {
             modalVideo.src = media.src;
             modalVideo.style.display = 'block';
         }
-        
-        modalTitle.textContent = media.title;
-        modalDescription.textContent = media.description;
         
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
